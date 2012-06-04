@@ -1,0 +1,46 @@
+@(aForm: Form[Person], people: List[Person])
+
+
+@main(""){
+<div class="row">
+    <div class="span8 offset2">
+        <div class="page-header">
+            <h1>Simple CRUD Page</h1>
+        </div>
+        
+        <form method="post" class="form-vertical" action="@controllers.routes.Application.create()" id="personForm">
+            <label>First Name <input name="firstName"/></label>
+            <label>Last Name <input name="lastName"/></label>
+            <input type="submit" value="Add Person" class="btn"/>
+        </form>
+
+    @if(!people.isEmpty()){
+        <h3>People</h3>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>&nbsp;</th>
+            </tr>
+            </thead>
+            @for(person <- people){
+            	<tr>
+                    <td>@person.getFullName()</td>
+                    @*{<td><button class="btn btn-danger btn-mini" onclick="@controllers.routes.Application.delete(person.id)">Delete</button></td>}*@
+                    <form method="post" action="@controllers.routes.Application.delete(person.id)">
+                        <td><input type="submit" class="btn btn-danger btn-mini" value="Delete"/></td>
+                    </form>
+                </tr>
+
+        	}
+            
+        </table>
+    }
+    </div>
+</div>
+}
+
+<script type="text/javascript">
+   function delete(id){
+   }
+</script>
