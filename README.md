@@ -5,3 +5,5 @@ NOTE: Even with the recent update to heroku for play2 apps, evolutions are still
 
 **Procfile** must contain this:
 	web: target/start -Dhttp.port=${PORT} -DapplyEvolutions.default=true -Ddb.default.driver=org.postgresql.Driver -Ddb.default.url=$DATABASE_URL ${JAVA_OPTS}
+	
+Also see: [Heroku Play20 Support](https://groups.google.com/forum/?fromgroups#!topic/play-framework/Vf83JoxHc-4)	
